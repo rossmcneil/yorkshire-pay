@@ -4,7 +4,7 @@ namespace Rossmcneil\YorkshirePay;
 
 class YorkshirePay
 {
-    public static function pay(array $request)
+    public function pay(array $request)
     {
 
         // Signature key entered on MMS. The demo accounts is fixed to this value,
@@ -100,8 +100,13 @@ class YorkshirePay
         }
     }
 
+    public function formatAmount($amount)
+    {
+        return $amount * 100;
+    }
+
     // Function to create a message signature
-    private static function createSignature(array $data, $key)
+    private function createSignature(array $data, $key)
     {
         // Sort by field name
         ksort($data);
